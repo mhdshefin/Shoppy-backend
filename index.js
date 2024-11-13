@@ -1,4 +1,3 @@
-const port = 4000
 const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
@@ -10,6 +9,8 @@ const { error } = require('console')
 const env = require('dotenv')
 env.config()
 
+const port = process.env.PORT || 4000
+
 app.use(express.json())
 app.use(cors())
 
@@ -18,7 +19,7 @@ app.use(cors())
 mongoose.connect(process.env.mongodb_URL)
     .then(() => {
         console.log('Database connected to mongoDB');
-        app.listen(process.env.PORT || port, (err) => {
+        app.listen(port, (err) => {
             if (!err) {
                 console.log("Server runnining on port" + port);
             } else {
