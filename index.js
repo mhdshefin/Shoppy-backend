@@ -9,17 +9,19 @@ const { error } = require('console')
 const env = require('dotenv')
 env.config()
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000 ;
 
 app.use(express.json())
 app.use(cors())
+console.log(process.env.mongodb_URL);
 
-// Database connection with MongoDB
+
+// Database connection with MongoDB 
 
 mongoose.connect(process.env.mongodb_URL)
     .then(() => {
         console.log('Database connected to mongoDB');
-        app.listen(port, (err) => {
+        app.listen(port ,(err) => {
             if (!err) {
                 console.log("Server runnining on port" + port);
             } else {
@@ -30,7 +32,9 @@ mongoose.connect(process.env.mongodb_URL)
     .catch(() => {
         console.log('Database not connected to mongoDb' + error);
 
-    })
+    })    
+
+
 // API creaction
 
 app.get('/', (req, res) => {
