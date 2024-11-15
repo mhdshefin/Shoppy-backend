@@ -12,8 +12,15 @@ env.config()
 const port = process.env.PORT || 3000 ;
 
 app.use(express.json())
-app.use(cors())
 console.log(process.env.mongodb_URL);
+
+const cors = require('cors');
+app.use(cors({
+    origin: 'https://shoppy-frontend.onrender.com', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    credentials: true 
+}));
+
 
 
 // Database connection with MongoDB 
