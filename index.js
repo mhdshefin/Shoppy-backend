@@ -14,7 +14,6 @@ const port = process.env.PORT || 3000 ;
 app.use(express.json())
 console.log(process.env.mongodb_URL);
 
-const cors = require('cors');
 app.use(cors({
     origin: 'https://shoppy-frontend.onrender.com', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], 
