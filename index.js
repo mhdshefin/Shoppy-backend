@@ -14,20 +14,12 @@ const port = process.env.PORT || 3000 ;
 app.use(express.json())
 console.log(process.env.mongodb_URL);
 
-const allowedOrigins = [
-  'https://shoppy-frontend.onrender.com',
-  'https://shoppy-admin-1ng2.onrender.com',
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-}));
+const corsOptions = {
+  origin: '*',  // Allow all origins
+};
+
+app.use(cors(corsOptions));
 
 
 
